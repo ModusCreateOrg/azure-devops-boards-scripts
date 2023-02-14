@@ -1,0 +1,42 @@
+resources:
+  webhooks:
+    - webhook: trigger_devops # Webhook alias
+      connection: incoming_webhook_connection_trigger_devops # Incoming webhook service connection
+
+pool:
+  name: "Azure Pipelines"
+
+variables:
+- group: "devops_boards"
+
+steps:
+
+- task: Bash@3
+  inputs:
+   workingDirectory: '$(System.DefaultWorkingDirectory)/'
+   targetType: 'inline'
+   script: |
+    # Install jq if necessary
+    if [ $(sudo dpkg-query -W -f='${Status}' jq 2>/dev/null | grep -c "ok installed") -eq 0 ];
+    then
+      sudo apt-get install -y jq;
+    fi
+    # Remove special characteres from JSON
+    escape_data() {
+      local data=$1
+      data="${data//$'\n'/''}"
+      data="${data//$'\r'/''}"
+      data="${data//\\//}"
+      echo "$data"
+    }
+    JsonPost=$(escape_data $'${{ convertToJson(parameters.trigger_devops) }}')
+    # Create JSON file to be used by bash
+    echo ${JsonPost} > JsonPost.json
+    cat JsonPost.json
+
+- task: Bash@3
+  inputs:
+    workingDirectory: '$(System.DefaultWorkingDirectory)/'
+    filePath: devops_effort_date_update.sh
+  env:
+    AZURE_DEVOPS_EXT_PAT: $(AZURE_DEVOPS_EXT_PAT)
