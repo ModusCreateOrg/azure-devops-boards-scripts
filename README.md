@@ -24,7 +24,7 @@
 Example: If a “Feature“ has 3 “Product Backlog Items”, 2 “Product Backlog Items” assigned to “sprint 23.1.1“ and 1 “Product Backlog Items” assigned to “sprint 23.1.2“ the respective “Feature” will receive the following values: Start Date: 1/1/2023 and End Date: 1/14/2023.
 
 ### Demo
-- There is a video showing how it works at: ![Download video](https://github.com/ModusCreateOrg/azure-devops-boards-scripts/blob/main/docs/video/how_it_works.mp4?raw=true)
+- There is a video showing how it works at: (https://github.com/ModusCreateOrg/azure-devops-boards-scripts/blob/main/docs/video/how_it_works.mp4?raw=true)
 
 ## Architecture chart
 ![Architecture Chart](https://github.com/fernandomatsuosantos/az_devops/blob/main/docs/img/architecture-chart.png?raw=true)
