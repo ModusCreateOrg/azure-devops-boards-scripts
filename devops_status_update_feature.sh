@@ -1,11 +1,25 @@
 #!/bin/bash
-# set -o xtrace
 
 echo "*** Status Update Feature"
 
+if [[ "$states_enabled" != "1" ]]; then
+    echo "state update disabled"
+    exit
+fi
 
 echo "feature_id: ${feature_id}"
 echo "project_name: ${project_name}"
+
+states_not_started=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_not_started')
+states_not_started_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_not_started_set_status')
+states_in_development=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_in_development')
+states_in_development_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_in_development_set_status')
+states_resolved=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_resolved')
+states_resolved_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_resolved_set_status')
+states_closed=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_closed')
+states_closed_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_closed_set_status')
+states_blocked=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_blocked')
+states_blocked_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_blocked_set_status')
 
 # Get all backlog itens
 state=""
@@ -39,7 +53,6 @@ for row_backlog in $(echo "${backlogs}" | jq -r '.[] | @base64'); do
     echo "Story_ID:  ${backlog_id} - STATE: ${backlog_system_state}"
 done
 
-
 if [[ $state_all_same == 1 ]]; then 
     if [[ " ${states_closed[*]} " =~ " $state " ]]; then
         state_final="${states_closed_set_status}"
@@ -54,17 +67,13 @@ if [[ $state_all_same == 1 ]]; then
     else
         state_final=""
     fi
-
 else
     if [[ $at_least_one_blocked == 1 ]]; then
         state_final="${states_blocked_set_status}"
     else
         state_final="${states_in_development_set_status}"
     fi
-
 fi
-
-
 
 if ! [[ -z $state ]]; then
     feature_update=$(az boards work-item update --id ${feature_id} --fields "System.State=${state_final}")

@@ -1,12 +1,10 @@
 #!/bin/bash
-# set -o xtrace
-
-source devops_variables.sh
 
 echo "*** Get ParentId"
 
+source devops_variables.sh
+
 JsonPost=$(cat JsonPost.json)
-# echo "${JsonPost}"
 
 eventType=$(echo "${JsonPost}" | jq '.eventType')
 if [[ ${eventType} = '"workitem.updated"' ]]; then

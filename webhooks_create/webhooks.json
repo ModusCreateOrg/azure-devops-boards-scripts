@@ -1,0 +1,282 @@
+[{
+    "status": "disabledByUser",
+    "publisherId": "tfs",
+    "eventType": "workitem.created",
+    "consumerId": "webHooks",
+    "consumerActionId": "httpRequest",
+    "publisherInputs": {
+        "areaPath": "\\_var_area_path_\\",
+        "projectId": "_var_project_id_",
+        "workItemType": "_work_item_name_"
+    },
+    "consumerInputs": {
+        "detailedMessagesToSend": "text",
+        "messagesToSend": "text",
+        "url": "https://dev.azure.com/_organization_name_/_apis/public/distributedtask/webhooks/incoming_webhook_connection_trigger_effort?api-version=6.0-preview"
+    }
+},
+{
+    "status": "disabledByUser",
+    "publisherId": "tfs",
+    "eventType": "workitem.created",
+    "consumerId": "webHooks",
+    "consumerActionId": "httpRequest",
+    "publisherInputs": {
+        "areaPath": "\\_var_area_path_\\",
+        "projectId": "_var_project_id_",
+        "workItemType": "_work_item_name_"
+    },
+    "consumerInputs": {
+        "detailedMessagesToSend": "text",
+        "messagesToSend": "text",
+        "url": "https://dev.azure.com/_organization_name_/_apis/public/distributedtask/webhooks/incoming_webhook_connection_trigger_date?api-version=6.0-preview"
+    }
+},
+{
+    "status": "disabledByUser",
+    "publisherId": "tfs",
+    "eventType": "workitem.created",
+    "consumerId": "webHooks",
+    "consumerActionId": "httpRequest",
+    "publisherInputs": {
+        "areaPath": "\\_var_area_path_\\",
+        "projectId": "_var_project_id_",
+        "workItemType": "_work_feature_name_"
+    },
+    "consumerInputs": {
+        "detailedMessagesToSend": "text",
+        "messagesToSend": "text",
+        "url": "https://dev.azure.com/_organization_name_/_apis/public/distributedtask/webhooks/incoming_webhook_connection_trigger_devops?api-version=6.0-preview"
+    }
+},
+{
+    "status": "disabledByUser",
+    "publisherId": "tfs",
+    "eventType": "workitem.deleted",
+    "consumerId": "webHooks",
+    "consumerActionId": "httpRequest",
+    "publisherInputs": {
+        "areaPath": "\\_var_area_path_\\",
+        "projectId": "_var_project_id_",
+        "workItemType": "_work_item_name_"
+    },
+    "consumerInputs": {
+        "detailedMessagesToSend": "text",
+        "messagesToSend": "text",
+        "url": "https://dev.azure.com/_organization_name_/_apis/public/distributedtask/webhooks/incoming_webhook_connection_trigger_effort?api-version=6.0-preview"
+    }
+},
+{
+    "status": "disabledByUser",
+    "publisherId": "tfs",
+    "eventType": "workitem.deleted",
+    "consumerId": "webHooks",
+    "consumerActionId": "httpRequest",
+    "publisherInputs": {
+        "areaPath": "\\_var_area_path_\\",
+        "projectId": "_var_project_id_",
+        "workItemType": "_work_feature_name_"
+    },
+    "consumerInputs": {
+        "detailedMessagesToSend": "text",
+        "messagesToSend": "text",
+        "url": "https://dev.azure.com/_organization_name_/_apis/public/distributedtask/webhooks/incoming_webhook_connection_trigger_devops?api-version=6.0-preview"
+    }
+},
+{
+    "status": "disabledByUser",
+    "publisherId": "tfs",
+    "eventType": "workitem.deleted",
+    "consumerId": "webHooks",
+    "consumerActionId": "httpRequest",
+    "publisherInputs": {
+        "areaPath": "\\_var_area_path_\\",
+        "projectId": "_var_project_id_",
+        "workItemType": "_work_item_name_"
+    },
+    "consumerInputs": {
+        "detailedMessagesToSend": "text",
+        "messagesToSend": "text",
+        "url": "https://dev.azure.com/_organization_name_/_apis/public/distributedtask/webhooks/incoming_webhook_connection_trigger_date?api-version=6.0-preview"
+    }
+},
+{
+    "status": "disabledByUser",
+    "publisherId": "tfs",
+    "eventType": "workitem.updated",
+    "consumerId": "webHooks",
+    "consumerActionId": "httpRequest",
+    "publisherInputs": {
+        "areaPath": "\\_var_area_path_\\",
+        "projectId": "_var_project_id_",
+        "workItemType": "_work_item_name_",
+        "changedFields": "_field_parent_name_"
+    },
+    "consumerInputs": {
+        "detailedMessagesToSend": "text",
+        "messagesToSend": "text",
+        "url": "https://dev.azure.com/_organization_name_/_apis/public/distributedtask/webhooks/incoming_webhook_connection_trigger_date?api-version=6.0-preview"
+    }
+},
+{
+    "status": "disabledByUser",
+    "publisherId": "tfs",
+    "eventType": "workitem.updated",
+    "consumerId": "webHooks",
+    "consumerActionId": "httpRequest",
+    "publisherInputs": {
+        "areaPath": "\\_var_area_path_\\",
+        "projectId": "_var_project_id_",
+        "workItemType": "_work_feature_name_",
+        "changedFields": "_field_parent_name_"
+    },
+    "consumerInputs": {
+        "detailedMessagesToSend": "text",
+        "messagesToSend": "text",
+        "url": "https://dev.azure.com/_organization_name_/_apis/public/distributedtask/webhooks/incoming_webhook_connection_trigger_devops?api-version=6.0-preview"
+    }
+},
+{
+    "status": "disabledByUser",
+    "publisherId": "tfs",
+    "eventType": "workitem.updated",
+    "consumerId": "webHooks",
+    "consumerActionId": "httpRequest",
+    "publisherInputs": {
+        "areaPath": "\\_var_area_path_\\",
+        "projectId": "_var_project_id_",
+        "workItemType": "_work_item_name_",
+        "changedFields": "_field_parent_name_"
+    },
+    "consumerInputs": {
+        "detailedMessagesToSend": "text",
+        "messagesToSend": "text",
+        "url": "https://dev.azure.com/_organization_name_/_apis/public/distributedtask/webhooks/incoming_webhook_connection_trigger_effort?api-version=6.0-preview"
+    }
+},
+{
+    "status": "disabledByUser",
+    "publisherId": "tfs",
+    "eventType": "workitem.updated",
+    "consumerId": "webHooks",
+    "consumerActionId": "httpRequest",
+    "publisherInputs": {
+        "areaPath": "\\_var_area_path_\\",
+        "projectId": "_var_project_id_",
+        "workItemType": "_work_feature_name_",
+        "changedFields": "_field_effort_name_"
+    },
+    "consumerInputs": {
+        "detailedMessagesToSend": "text",
+        "messagesToSend": "text",
+        "url": "https://dev.azure.com/_organization_name_/_apis/public/distributedtask/webhooks/incoming_webhook_connection_trigger_devops?api-version=6.0-preview"
+    }
+},
+{
+    "status": "disabledByUser",
+    "publisherId": "tfs",
+    "eventType": "workitem.updated",
+    "consumerId": "webHooks",
+    "consumerActionId": "httpRequest",
+    "publisherInputs": {
+        "areaPath": "\\_var_area_path_\\",
+        "projectId": "_var_project_id_",
+        "workItemType": "_work_item_name_",
+        "changedFields": "_field_iteration_id_name_"
+    },
+    "consumerInputs": {
+        "detailedMessagesToSend": "text",
+        "messagesToSend": "text",
+        "url": "https://dev.azure.com/_organization_name_/_apis/public/distributedtask/webhooks/incoming_webhook_connection_trigger_date?api-version=6.0-preview"
+    }
+},
+{
+    "status": "disabledByUser",
+    "publisherId": "tfs",
+    "eventType": "workitem.updated",
+    "consumerId": "webHooks",
+    "consumerActionId": "httpRequest",
+    "publisherInputs": {
+        "areaPath": "\\_var_area_path_\\",
+        "projectId": "_var_project_id_",
+        "workItemType": "_work_feature_name_",
+        "changedFields": "_field_start_date_name_"
+    },
+    "consumerInputs": {
+        "detailedMessagesToSend": "text",
+        "messagesToSend": "text",
+        "url": "https://dev.azure.com/_organization_name_/_apis/public/distributedtask/webhooks/incoming_webhook_connection_trigger_devops?api-version=6.0-preview"
+    }
+},
+{
+    "status": "disabledByUser",
+    "publisherId": "tfs",
+    "eventType": "workitem.updated",
+    "consumerId": "webHooks",
+    "consumerActionId": "httpRequest",
+    "publisherInputs": {
+        "areaPath": "\\_var_area_path_\\",
+        "projectId": "_var_project_id_",
+        "workItemType": "_work_feature_name_",
+        "changedFields": "_field_target_date_name_"
+    },
+    "consumerInputs": {
+        "detailedMessagesToSend": "text",
+        "messagesToSend": "text",
+        "url": "https://dev.azure.com/_organization_name_/_apis/public/distributedtask/webhooks/incoming_webhook_connection_trigger_devops?api-version=6.0-preview"
+    }
+},
+{
+    "status": "disabledByUser",
+    "publisherId": "tfs",
+    "eventType": "workitem.updated",
+    "consumerId": "webHooks",
+    "consumerActionId": "httpRequest",
+    "publisherInputs": {
+        "areaPath": "\\_var_area_path_\\",
+        "projectId": "_var_project_id_",
+        "workItemType": "_work_item_name_",
+        "changedFields": "_field_state_name_"
+    },
+    "consumerInputs": {
+        "detailedMessagesToSend": "text",
+        "messagesToSend": "text",
+        "url": "https://dev.azure.com/_organization_name_/_apis/public/distributedtask/webhooks/incoming_webhook_connection_trigger_effort?api-version=6.0-preview"
+    }
+},
+{
+    "status": "disabledByUser",
+    "publisherId": "tfs",
+    "eventType": "workitem.updated",
+    "consumerId": "webHooks",
+    "consumerActionId": "httpRequest",
+    "publisherInputs": {
+        "areaPath": "\\_var_area_path_\\",
+        "projectId": "_var_project_id_",
+        "workItemType": "_work_item_name_",
+        "changedFields": "_field_effort_name_"
+    },
+    "consumerInputs": {
+        "detailedMessagesToSend": "text",
+        "messagesToSend": "text",
+        "url": "https://dev.azure.com/_organization_name_/_apis/public/distributedtask/webhooks/incoming_webhook_connection_trigger_effort?api-version=6.0-preview"
+    }
+},
+{
+    "status": "disabledByUser",
+    "publisherId": "tfs",
+    "eventType": "workitem.updated",
+    "consumerId": "webHooks",
+    "consumerActionId": "httpRequest",
+    "publisherInputs": {
+        "areaPath": "\\_var_area_path_\\",
+        "projectId": "_var_project_id_",
+        "workItemType": "_work_feature_name_",
+        "changedFields": "_field_completed_effort_name_"
+    },
+    "consumerInputs": {
+        "detailedMessagesToSend": "text",
+        "messagesToSend": "text",
+        "url": "https://dev.azure.com/_organization_name_/_apis/public/distributedtask/webhooks/incoming_webhook_connection_trigger_devops?api-version=6.0-preview"
+    }
+}]

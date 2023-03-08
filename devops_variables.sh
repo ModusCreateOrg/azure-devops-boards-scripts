@@ -14,16 +14,10 @@ completed_effort_name="$COMPLETED_EFFORT_NAME"
 percentage_completed_effort_name="$PERCENTAGE_COMPLETED_EFFORT_NAME"
 time_zone="$TIME_ZONE"
 
-states_not_started="$STATES_NOT_STARTED"
-states_not_started_set_status="$STATES_NOT_STARTED_SET_STATUS"
-states_in_development="$STATES_IN_DEVELOPMENT"
-states_in_development_set_status="$STATES_IN_DEVELOPMENT_SET_STATUS"
-states_resolved="$STATES_RESOLVED"
-states_resolved_set_status="$STATES_RESOLVED_SET_STATUS"
-states_closed="$STATES_CLOSED"
-states_closed_set_status="$STATES_CLOSED_SET_STATUS"
-states_blocked="$STATES_BLOCKED"
-states_blocked_set_status="$STATES_BLOCKED_SET_STATUS"
+states_enabled="$STATES_ENABLED"
+states="$STATES"
+
+# Variables example
 
 # backlog_item_name="Product Backlog Item"
 # feature_name="Feature"
@@ -35,13 +29,15 @@ states_blocked_set_status="$STATES_BLOCKED_SET_STATUS"
 # percentage_completed_effort_name="PercentageCompletedEffort"
 # time_zone="Z"
 
-# states_not_started=("New" "Approved")
+# States check file states.json
+
+# states_not_started="New , Approved"
 # states_not_started_set_status="New"
-# states_in_development=("Committed")
+# states_in_development="Committed"
 # states_in_development_set_status="In Progress"
-# states_resolved=("Ready for QA" "QA Done")
+# states_resolved="Ready for QA , QA Done"
 # states_resolved_set_status="Resolved"
-# states_closed=("Done")
+# states_closed="Done"
 # states_closed_set_status="Done"
-# states_blocked=("Removed")
-# states_blocked_set_status=("Removed")
+# states_blocked="Removed"
+# states_blocked_set_status="Removed"

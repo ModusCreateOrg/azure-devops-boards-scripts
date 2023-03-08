@@ -1,9 +1,8 @@
 #!/bin/bash
-# set -o xtrace
-
-source devops_variables.sh
 
 echo "*** Effort Update Feature"
+
+source devops_variables.sh
 
 # Get parameters
 feature_id=$1
@@ -14,7 +13,6 @@ backlog_effort_total=0
 backlog_completed_effort_total=0
 
 backlogs=$(az boards query --wiql "SELECT id, Microsoft.VSTS.Scheduling.${effort_name}, System.State, System.IterationId, System.IterationPath FROM workitems where [System.TeamProject] = '${project_name}' and [System.Parent] = '${feature_id}' and [System.WorkItemType] = '${backlog_item_name}'")
-# echo "${backlogs}"
 for row_backlog in $(echo "${backlogs}" | jq -r '.[] | @base64'); do
     _jq() {
     echo ${row_backlog} | base64 --decode | jq -r ${1}

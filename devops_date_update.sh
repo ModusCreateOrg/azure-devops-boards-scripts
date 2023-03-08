@@ -1,5 +1,4 @@
 #!/bin/bash
-# set -o xtrace
 
 echo "*** Date Update"
 

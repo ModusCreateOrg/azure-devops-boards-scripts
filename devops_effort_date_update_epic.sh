@@ -1,9 +1,8 @@
 #!/bin/bash
-# set -o xtrace
-
-source devops_variables.sh
 
 echo "*** Effort Update Epic"
+
+source devops_variables.sh
 
 # Get parameters
 epic_id=$1
@@ -19,7 +18,6 @@ echo "project_name: ${project_name}"
 re='^[0-9]+$'
 
 features=$(az boards query --wiql "SELECT Microsoft.VSTS.Scheduling.${effort_name}, Custom.${completed_effort_name}, Microsoft.VSTS.Scheduling.StartDate, Microsoft.VSTS.Scheduling.TargetDate FROM workitems where [System.TeamProject] = '${project_name}' and [System.Parent] = '${epic_id}' and [System.WorkItemType] = '${feature_name}'")
-#echo "${features}"
 for row_feature in $(echo "${features}" | jq -r '.[] | @base64'); do
     _jq() {
     echo ${row_feature} | base64 --decode | jq -r ${1}
@@ -61,7 +59,7 @@ for row_feature in $(echo "${features}" | jq -r '.[] | @base64'); do
     fi
 
 done
-    echo "EFFORT total: ${epic_effort_total} - completed effort total: ${epic_completed_effort_total}"
+echo "EFFORT total: ${epic_effort_total} - completed effort total: ${epic_completed_effort_total}"
 
 if [[ ${epic_effort_total} == "0" ]]; then
     percentage_epic_effort_total=0
