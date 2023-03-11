@@ -23,6 +23,11 @@
 - The “Start Date” will be the minimum iteration date and the “Target Date” will be the maximum iteration date.  
 Example: If a “Feature“ has 3 “Product Backlog Items”, 2 “Product Backlog Items” assigned to “sprint 23.1.1“ and 1 “Product Backlog Items” assigned to “sprint 23.1.2“ the respective “Feature” will receive the following values: Start Date: 1/1/2023 and End Date: 1/14/2023.
 
+### Status Automation
+- Status will change automatically based on rules on file "states.json"
+- "states_x" means: If all Backlog Items are set to this state the parent feature will be set to states_x_set_status
+- "states_x_one" means: If any Backlog Items are set to this state the parent feature will be set to states_x_one_set_status
+
 ### Demo
 - There is a video showing how it works at:  
 https://github.com/ModusCreateOrg/azure-devops-boards-scripts/blob/main/docs/video/how_it_works.mp4?raw=true
@@ -37,6 +42,8 @@ The bash process uses the “az boards“ client which calls the Azure DevOps AP
 
 The fields on “Feature” will be updated a few seconds after saving the “Product Backlog Item” (as soon as the pipeline finishes running). The user must refresh the page to see the results after the update.
 To avoid using unnecessary resources the script will run only when fields (effort, state or interation) are updated on “Product Backlog Items”.
+
+If you set "states_enabled=1" on variable Library it will also run the status automation based on rules stored at variable Library called "states". The file states.json is a template to create the json. (Note: You must store the json on variable Library - the file is just a template - changing the file won't work)
 
 ## Installing on Azure Devops
 
@@ -57,7 +64,8 @@ To configure the process will be necessary “Administrative Access” to Azure 
 
 1.  Create the Interactions on Azure Devops based on the standards (Project Settings - Project Configuration)
 
-![Step 1](https://github.com/fernandomatsuosantos/az_devops/blob/main/docs/img/1.png?raw=true)
+![Step 1](https://github.com/fernandomatsuosantos/az_devops/blob/main/docs/img/1.png?raw=true)  
+Important note: If you don't have Strints (3rd. level interactions) the process won't calculate the “Start Date” and “End Date”
 
 2.  Customize the Azure Board adding the fields “Percentage Completed Effort” and “Completed Effort” on “features” and also a field called “ParentId” on “Product Backlog Item”;
 
@@ -86,7 +94,7 @@ To configure the process will be necessary “Administrative Access” to Azure 
 
 ![Step 6](https://github.com/fernandomatsuosantos/az_devops/blob/main/docs/img/6.png?raw=true)
 
-7.  Create the Service Hooks - You can use create_hook.txt as a template (Azure Devops won't accept creating multiple webhooks, so create one by one);
+7.  Create the Service Hooks (You can tun the file "/webhooks_create/webhooks_create.sh" to create the webhooks automatically - be sure you replaced the variables on bash file with the respective values)
 
 ![Step 7](https://github.com/fernandomatsuosantos/az_devops/blob/main/docs/img/7.png?raw=true)
 

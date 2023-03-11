@@ -8,7 +8,7 @@ source devops_variables.sh
 feature_id=$1
 project_name=$2
 
-backlogs=$(az boards query --wiql "SELECT id,System.IterationId FROM workitems where [System.TeamProject] = '${project_name}' and [System.Parent] = '${feature_id}' and [System.WorkItemType] = '${backlog_item_name}'")
+backlogs=$(az boards query --wiql "SELECT id,System.IterationId,System.IterationPath FROM workitems where [System.TeamProject] = '${project_name}' and [System.Parent] = '${feature_id}' and [System.WorkItemType] = '${backlog_item_name}'")
 
 for row_backlog in $(echo "${backlogs}" | jq -r '.[] | @base64'); do
     _jq() {
@@ -16,8 +16,17 @@ for row_backlog in $(echo "${backlogs}" | jq -r '.[] | @base64'); do
     }
     backlog_id=$(_jq '.id')
     backlog_iteration_id=$(_jq '.fields."System.IterationId"')
+    backlog_iteration_path=$(_jq '.fields."System.IterationPath"')
     echo "backlog_id: ${backlog_id}"    
     echo "iteration_id: ${backlog_iteration_id}"
+    echo "Iteration_path: ${backlog_iteration_path}"
+
+    # check if it's a sprint (3rd. level iteration)
+    count=$(grep -o '\\' <<<"$backlog_iteration_path" | grep -c .)
+    echo "Iteration_path_level: ${count}"
+    if [[ ${count} < 2 ]]; then
+        continue
+    fi
 
     backlog_iteration=$(az boards iteration project show --project "${project_name}" --id ${backlog_iteration_id})
     backlog_start_date=$(echo "${backlog_iteration}" | jq -r '.[0] | .attributes.startDate')

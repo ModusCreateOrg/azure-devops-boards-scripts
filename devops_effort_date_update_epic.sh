@@ -68,14 +68,11 @@ else
 fi
 
 # Update features values
-if [[ ${epic_min_start_date} != '' && ${epic_max_finish_date} != '' ]]; then
-    feature_update=$(az boards work-item update --id ${epic_id} --fields "Microsoft.VSTS.Scheduling.${effort_name}=${epic_effort_total}" "Custom.${completed_effort_name}=${epic_completed_effort_total}" "Custom.${percentage_completed_effort_name}=${percentage_epic_effort_total}" "Start Date=${epic_min_start_date}" "Target Date=${epic_max_finish_date}")
-else
-    feature_update=$(az boards work-item update --id ${epic_id} --fields "Microsoft.VSTS.Scheduling.${effort_name}=${epic_effort_total}" "Custom.${completed_effort_name}=${epic_completed_effort_total}" "Custom.${percentage_completed_effort_name}=${percentage_epic_effort_total}")
-fi
+epic_update_1=$(az boards work-item update --id ${epic_id} --fields "Microsoft.VSTS.Scheduling.${effort_name}=${epic_effort_total}" "Custom.${completed_effort_name}=${epic_completed_effort_total}" "Custom.${percentage_completed_effort_name}=${percentage_epic_effort_total}")
+epic_update_2=$(az boards work-item update --id ${epic_id} --fields "Start Date=${epic_min_start_date}" "Target Date=${epic_max_finish_date}")
 
 if [[ ${effort_name} != "Effort" ]]; then
-    feature_update_2=$(az boards work-item update --id ${epic_id} --fields "Effort=${epic_effort_total}")
+    epic_update_3=$(az boards work-item update --id ${epic_id} --fields "Effort=${epic_effort_total}")
 fi
 
 echo "epic_effort_total: ${epic_effort_total}"

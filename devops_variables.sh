@@ -30,14 +30,3 @@ states="$STATES"
 # time_zone="Z"
 
 # States check file states.json
-
-# states_not_started="New , Approved"
-# states_not_started_set_status="New"
-# states_in_development="Committed"
-# states_in_development_set_status="In Progress"
-# states_resolved="Ready for QA , QA Done"
-# states_resolved_set_status="Resolved"
-# states_closed="Done"
-# states_closed_set_status="Done"
-# states_blocked="Removed"
-# states_blocked_set_status="Removed"
