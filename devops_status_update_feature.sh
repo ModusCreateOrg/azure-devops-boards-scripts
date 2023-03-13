@@ -10,24 +10,27 @@ fi
 echo "feature_id: ${feature_id}"
 echo "project_name: ${project_name}"
 
-states_1=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_1')
-states_1_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_1_set_status')
-states_2=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_2')
-states_2_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_2_set_status')
-states_3=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_3')
-states_3_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_3_set_status')
-states_4=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_4')
-states_4_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_4_set_status')
-states_5=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_5')
-states_5_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_5_set_status')
-states_6=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_6')
-states_6_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_6_set_status')
-states_7=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_7')
-states_7_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_7_set_status')
-states_8=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_8')
-states_8_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_8_set_status')
-states_9=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_9')
-states_9_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_9_set_status')
+states_1_all=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_1_all')
+states_1_all_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_1_all_set_status')
+states_2_all=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_2_all')
+states_2_all_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_2_all_set_status')
+states_3_all=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_3_all')
+states_3_all_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_3_all_set_status')
+states_4_all=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_4_all')
+states_4_all_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_4_all_set_status')
+states_5_all=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_5_all')
+states_5_all_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_5_all_set_status')
+
+states_1_or=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_1_or')
+states_1_or_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_1_or_set_status')
+states_2_or=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_2_or')
+states_2_or_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_2_or_set_status')
+states_3_or=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_3_or')
+states_3_or_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_3_or_set_status')
+states_4_or=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_4_or')
+states_4_or_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_4_or_set_status')
+states_5_or=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_5_or')
+states_5_or_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_5_or_set_status')
 
 states_1_one=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_1_one')
 states_1_one_set_status=$(echo $states | jq --arg project_name "$project_name" -r '.[] | select(.project==$project_name) | .states_1_one_set_status')
@@ -44,8 +47,13 @@ states_5_one_set_status=$(echo $states | jq --arg project_name "$project_name" -
 state=""
 state_all_same=1
 state_final=""
-at_least_one_blocked=0
 state_final_id=0
+total_work_item=0
+group_final_1=0
+group_final_2=0
+group_final_3=0
+group_final_4=0
+group_final_5=0
 
 backlogs=$(az boards query --wiql "SELECT id, System.State FROM workitems where [System.TeamProject] = '${project_name}' and [System.Parent] = '${feature_id}' and [System.WorkItemType] = '${backlog_item_name}'")
 
@@ -60,13 +68,27 @@ for row_backlog in $(echo "${backlogs}" | jq -r '.[] | @base64'); do
         state=$backlog_system_state
     fi
 
+    # check if all work items have the same status
     if [[ "$backlog_system_state" == "$state" ]]; then
         state=$backlog_system_state
     else
         state_all_same=0
     fi
 
-    # Set state_final_id to have a priority
+    # Group status (AND)
+    if [[ " ${states_1_or[*]} " =~ " $backlog_system_state " ]]; then
+        group_final_1=$((${group_final_1} + 1))
+    elif [[ " ${states_2_or[*]} " =~ " $backlog_system_state " ]]; then
+        group_final_2=$((${group_final_2} + 1))
+    elif [[ " ${states_3_or[*]} " =~ " $backlog_system_state " ]]; then
+        group_final_3=$((${group_final_3} + 1))
+    elif [[ " ${states_4_or[*]} " =~ " $backlog_system_state " ]]; then
+        group_final_4=$((${group_final_4} + 1))
+    elif [[ " ${states_5_or[*]} " =~ " $backlog_system_state " ]]; then
+        group_final_5=$((${group_final_5} + 1))
+    fi
+
+    # Set status (ANY)
     if [[ " ${states_1_one[*]} " =~ " $backlog_system_state " && ${state_final_id} < 5 ]]; then
         state_final_id=5
     elif [[ " ${states_2_one[*]} " =~ " $backlog_system_state " && ${state_final_id} < 4 ]]; then
@@ -79,42 +101,55 @@ for row_backlog in $(echo "${backlogs}" | jq -r '.[] | @base64'); do
         state_final_id=1
     fi
 
+    total_work_item=$((${total_work_item} + 1))
+
     echo "story_id:  ${backlog_id} - state: ${backlog_system_state}"
-    echo "state_final:  ${state_final_id}"
+    echo "total_work_item:  ${total_work_item}"
 done
 
-if [[ ${state_final_id} == 1 ]]; then
-    state_final="${states_5_one_set_status}"
-elif [[ ${state_final_id} == 2 ]]; then
-    state_final="${states_4_one_set_status}"
-elif [[ ${state_final_id} == 3 ]]; then
-    state_final="${states_3_one_set_status}"
-elif [[ ${state_final_id} == 4 ]]; then
-    state_final="${states_2_one_set_status}"
-elif [[ ${state_final_id} == 5 ]]; then
-    state_final="${states_1_one_set_status}"
+if [[ ${state_all_same} == 1 ]]; then
+    if [[ " ${states_1_all[*]} " =~ " $state " ]]; then
+        state_final="${states_1_all_set_status}"
+    elif [[ " ${states_2_all[*]} " =~ " $state " ]]; then
+        state_final="${states_2_all_set_status}"
+    elif [[ " ${states_3_all[*]} " =~ " $state " ]]; then
+        state_final="${states_3_all_set_status}"
+    elif [[ " ${states_4_all[*]} " =~ " $state " ]]; then
+        state_final="${states_4_all_set_status}"
+    elif [[ " ${states_5_all[*]} " =~ " $state " ]]; then
+        state_final="${states_5_all_set_status}"  
+    fi
+    echo "all the same"
 fi
 
-if [[ ${state_all_same} == 1 && ${state_final} == "" ]]; then
-    if [[ " ${states_1[*]} " =~ " $state " ]]; then
-        state_final="${states_1_set_status}"
-    elif [[ " ${states_2[*]} " =~ " $state " ]]; then
-        state_final="${states_2_set_status}"
-    elif [[ " ${states_3[*]} " =~ " $state " ]]; then
-        state_final="${states_3_set_status}"
-    elif [[ " ${states_4[*]} " =~ " $state " ]]; then
-        state_final="${states_4_set_status}"
-    elif [[ " ${states_5[*]} " =~ " $state " ]]; then
-        state_final="${states_5_set_status}"
-    elif [[ " ${states_6[*]} " =~ " $state " ]]; then
-        state_final="${states_6_set_status}"
-    elif [[ " ${states_7[*]} " =~ " $state " ]]; then
-        state_final="${states_7_set_status}"
-    elif [[ " ${states_8[*]} " =~ " $state " ]]; then
-        state_final="${states_8_set_status}"
-    elif [[ " ${states_9[*]} " =~ " $state " ]]; then
-        state_final="${states_9_set_status}"      
+if [[ ${state_final} == "" ]]; then
+    if [[ ${group_final_1} == ${total_work_item} ]]; then
+        state_final="${states_1_or_set_status}"
+    elif [[ ${group_final_2} == ${total_work_item} ]]; then
+        state_final="${states_2_or_set_status}"
+    elif [[ ${group_final_3} == ${total_work_item} ]]; then
+        state_final="${states_3_or_set_status}"
+    elif [[ ${group_final_4} == ${total_work_item} ]]; then
+        state_final="${states_4_or_set_status}"
+    elif [[ ${group_final_5} == ${total_work_item} ]]; then
+        state_final="${states_5_or_set_status}"
     fi
+    echo "or"
+fi
+
+if [[ ${state_final} == "" ]]; then
+    if [[ ${state_final_id} == 1 ]]; then
+        state_final="${states_5_one_set_status}"
+    elif [[ ${state_final_id} == 2 ]]; then
+        state_final="${states_4_one_set_status}"
+    elif [[ ${state_final_id} == 3 ]]; then
+        state_final="${states_3_one_set_status}"
+    elif [[ ${state_final_id} == 4 ]]; then
+        state_final="${states_2_one_set_status}"
+    elif [[ ${state_final_id} == 5 ]]; then
+        state_final="${states_1_one_set_status}"
+    fi
+    echo "one"
 fi
 
 if ! [[ -z $state ]]; then
