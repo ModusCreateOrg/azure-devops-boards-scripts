@@ -78,13 +78,17 @@ for row_backlog in $(echo "${backlogs}" | jq -r '.[] | @base64'); do
     # Group status (AND)
     if [[ " ${states_1_or[*]} " =~ " $backlog_system_state " ]]; then
         group_final_1=$((${group_final_1} + 1))
-    elif [[ " ${states_2_or[*]} " =~ " $backlog_system_state " ]]; then
+    fi
+    if [[ " ${states_2_or[*]} " =~ " $backlog_system_state " ]]; then
         group_final_2=$((${group_final_2} + 1))
-    elif [[ " ${states_3_or[*]} " =~ " $backlog_system_state " ]]; then
+    fi
+    if [[ " ${states_3_or[*]} " =~ " $backlog_system_state " ]]; then
         group_final_3=$((${group_final_3} + 1))
-    elif [[ " ${states_4_or[*]} " =~ " $backlog_system_state " ]]; then
+    fi
+    if [[ " ${states_4_or[*]} " =~ " $backlog_system_state " ]]; then
         group_final_4=$((${group_final_4} + 1))
-    elif [[ " ${states_5_or[*]} " =~ " $backlog_system_state " ]]; then
+    fi
+    if [[ " ${states_5_or[*]} " =~ " $backlog_system_state " ]]; then
         group_final_5=$((${group_final_5} + 1))
     fi
 
@@ -106,6 +110,13 @@ for row_backlog in $(echo "${backlogs}" | jq -r '.[] | @base64'); do
     echo "story_id:  ${backlog_id} - state: ${backlog_system_state}"
     echo "total_work_item:  ${total_work_item}"
 done
+
+echo "state_final_id: ${state_final_id}"
+echo "group_final_1: ${group_final_1}"
+echo "group_final_2: ${group_final_2}"
+echo "group_final_3: ${group_final_3}"
+echo "group_final_4: ${group_final_4}"
+echo "group_final_5: ${group_final_5}"
 
 if [[ ${state_all_same} == 1 ]]; then
     if [[ " ${states_1_all[*]} " =~ " $state " ]]; then
