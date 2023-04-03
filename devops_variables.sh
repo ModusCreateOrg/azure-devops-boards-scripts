@@ -12,6 +12,7 @@ effort_name="$EFFORT_NAME"
 parent_id_name="$PARENT_ID_NAME"
 completed_effort_name="$COMPLETED_EFFORT_NAME"
 percentage_completed_effort_name="$PERCENTAGE_COMPLETED_EFFORT_NAME"
+total_effort_name="$TOTAL_EFFORT_NAME"
 time_zone="$TIME_ZONE"
 
 states_enabled="$STATES_ENABLED"

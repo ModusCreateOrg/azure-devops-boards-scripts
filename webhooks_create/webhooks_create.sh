@@ -25,7 +25,7 @@ field_completed_effort_name="Completed Effort"
 url="https://dev.azure.com/$organization_name/_apis/projects/$project_name?api-version=7.0"
 url="${url// /%20}"
 project_json=$(curl -X GET $url -H "Authorization: Basic $(echo -n "":${pat}"" | base64)")
-project_id=$(echo ${project_json} | jq '.id')
+project_id=$(echo ${project_json} | jq -r '.id')
 
 # json read
 webhooks=$(cat webhooks.json)
