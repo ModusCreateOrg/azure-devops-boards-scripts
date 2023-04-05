@@ -47,7 +47,7 @@ else
 fi
 
 if [[ ${total_effort_name} != "" ]]; then
-    feature_update_2=$(az boards work-item update --id ${feature_id} --fields "Custom.${total_effort_name}=${backlog_total}|${backlog_total_completed}")
+    feature_update_2=$(az boards work-item update --id ${feature_id} --fields "Custom.${total_effort_name}=${backlog_total_completed}|${backlog_total}")
 fi
 
 echo "backlog_effort_total: ${backlog_effort_total}"
