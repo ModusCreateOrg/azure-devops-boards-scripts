@@ -55,8 +55,8 @@ echo "features_updated: ${count}"
 # Update TotalEffort, CompletedEffort, PercentageCompletedEffort, StartDate, TargetDate fields for all "Features"
 features=$(az boards query --wiql "SELECT id, System.TeamProject FROM workitems where [System.TeamProject] = '${project_name}' and [System.WorkItemType] = '${feature_name}'")
 
-chmod +x devops_effort_update_feature.sh
-chmod +x devops_date_update_feature.sh
+#chmod +x devops_effort_update_feature.sh
+#chmod +x devops_date_update_feature.sh
 
 count=0
 for row_features in $(echo "${features}" | jq -r '.[] | @base64'); do
@@ -76,7 +76,7 @@ echo "Features updated: ${count}"
 # Update TotalEffort, CompletedEffort, PercentageCompletedEffort, StartDate, TargetDate fields for all "Epics"
 epics=$(az boards query --wiql "SELECT id, System.TeamProject FROM workitems where [System.TeamProject] = '${project_name}' and [System.WorkItemType] = '${epic_name}'")
 
-chmod +x devops_effort_date_update_epic.sh
+#chmod +x devops_effort_date_update_epic.sh
 
 count=0
 for row_epics in $(echo "${epics}" | jq -r '.[] | @base64'); do

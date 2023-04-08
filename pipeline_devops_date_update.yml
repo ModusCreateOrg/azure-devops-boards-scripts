@@ -16,27 +16,33 @@ steps:
    workingDirectory: '$(System.DefaultWorkingDirectory)/'
    targetType: 'inline'
    script: |
-    # Install jq if necessary
-    if [ $(sudo dpkg-query -W -f='${Status}' jq 2>/dev/null | grep -c "ok installed") -eq 0 ];
-    then
-      sudo apt-get install -y jq;
-    fi
+    export AZURE_DEVOPS_EXT_PAT=$(AZURE_DEVOPS_EXT_PAT)
+    run_script="devops_date_update.sh"
+    #---------------------
     # Remove special characteres from JSON
-    escape_data() {
-      local data=$1
-      data="${data//$'\n'/''}"
-      data="${data//$'\r'/''}"
-      data="${data//\\//}"
-      echo "$data"
-    }
-    JsonPost=$(escape_data $'${{ convertToJson(parameters.trigger_date) }}')
-    # Create JSON file to be used by bash
-    echo ${JsonPost} > JsonPost.json
+    #---------------------    
+    echo '${{ convertToJson(parameters.trigger_date) }}' > JsonPost_0.json
+    tr -d '\n\r' < JsonPost_0.json > JsonPost_1.json
+    tr '\\' '//' < JsonPost_1.json > JsonPost_2.json
+    cat JsonPost_2.json > JsonPost.json
     cat JsonPost.json
-
-- task: Bash@3
-  inputs:
-    workingDirectory: '$(System.DefaultWorkingDirectory)/'
-    filePath: devops_date_update.sh
-  env:
-    AZURE_DEVOPS_EXT_PAT: $(AZURE_DEVOPS_EXT_PAT)
+    #---------------------
+    # Check if it's running on Microsoft Hosted Agent or Self-Hosted Agent
+    #---------------------
+    echo "Agent name: (${AGENT_NAME})"
+    if [ "$AGENT_NAME" = "Hosted Agent" ]; then
+      echo "Running on Microsoft Hosted Agent"
+      chmod +x *.sh
+      ./${run_script}
+    else
+      echo "Running on Self-Hosted Agent"
+      if [ $(dpkg-query -W -f='${Status}' docker 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
+        echo "Docker is installed"
+        docker --version
+        chmod +x *.sh
+        ./devops_variables.sh 1
+        docker run --env-file env.list -v "$(System.DefaultWorkingDirectory):/home/circleci/project" cimg/azure:2023.04.1 /bin/bash -c "az config set extension.use_dynamic_install=yes_without_prompt; sudo chmod +x /home/circleci/project/*.sh; /home/circleci/project/${run_script}"
+      else
+        echo "You must install docker on Self-Hosted Agent"
+      fi
+    fi

@@ -4,7 +4,7 @@ echo "*** Effort Update"
 
 source devops_get_parent_id.sh
 
-chmod +x devops_effort_update_feature.sh
+#chmod +x devops_effort_update_feature.sh
 ./devops_effort_update_feature.sh "${ParentId}" "${project_name}"
 
 # If feature changed update previous feature
