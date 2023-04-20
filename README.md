@@ -49,7 +49,7 @@ If you set "states_enabled=1" on variable Library it will also run the status au
 
 ### Permissions
 
-To configure the process will be necessary “Administrative Access” to Azure Devops
+To configure the process “Administrative Access” to Azure Devops will be necessary as well as a technical user.
 - Basically we need permission to do the following actions:
   - Azure Boards - Full control over the resource
   - Make changes on “Project Configuration” (Add/Remove/Edit Interactions)
